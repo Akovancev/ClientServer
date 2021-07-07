@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Main } from './components/Main/Main';
+import { Edit } from './components/Edit/Edit';
+import { Create } from './components/Create/Create';
+import { Switch, Route } from 'react-router-dom'
+import Container from '@material-ui/core/Container';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const url = "http://localhost:8000/emp"
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
+
+  componentDidMount() {
+    fetch(url)
+      .then(response => response.json())
+      .then(commits => this.setState({ data: commits }))
+  }
+
+  componentDidUpdate() {
+    fetch(url)
+      .then(response => response.json())
+      .then(commits => this.setState({ data: commits }))
+  }
+
+  render() {
+    return (
+      <Container maxWidth="sm">
+        <Switch>
+          <Route path="/edit/:id?">
+            {this.state.data.length === 0 ? <div>Loading...</div>
+              : <Edit data={this.state.data} />}
+          </Route>
+          <Route path="/">
+            <Create />
+            <Main data={this.state.data} handleEdit={this.handleEdit} />
+          </Route>
+        </Switch>
+      </Container>
+    )
+  }
 }
-
-export default App;
