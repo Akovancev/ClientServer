@@ -33,7 +33,7 @@ export default class App extends React.Component {
         <Switch>
           <Route path="/edit/:id?">
             {this.state.data.length === 0 ? <div>Loading...</div>
-              : <Edit data={this.state.data} />}
+              : <Edit data={this.state.data}/>}
           </Route>
           <Route path="/">
             <Create />

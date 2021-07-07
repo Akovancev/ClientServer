@@ -1,22 +1,10 @@
 import React from "react";
-import { validate } from "./validate";
 import { useFormik } from "formik"
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '100%'
-        },
-        '& .MuiButton-root': {
-            margin: theme.spacing(1),
-            width: '100%'
-        },
-    },
-}));
+import { validate } from "./validate";
+import { useStyles } from "./styles";
 
 export const Create = () => {
     const classes = useStyles();
@@ -42,6 +30,7 @@ export const Create = () => {
             }
         }
     )
+    
     return (
         <div>
             <form className={classes.root} onSubmit={formik.handleSubmit}>

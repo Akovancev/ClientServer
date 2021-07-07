@@ -1,24 +1,11 @@
 import React from "react";
-import { validate } from "../Create/validate";
+import { useParams } from 'react-router-dom';
 import { useFormik } from "formik"
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import { useParams } from 'react-router-dom';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '100%'
-        },
-        '& .MuiButton-root': {
-            margin: theme.spacing(1),
-            width: '100%'
-        },
-    },
-}));
+import { validate } from "../Create/validate";
+import { useStyles } from "../Create/styles";
 
 export const Edit = (props) => {
     const classes = useStyles();

@@ -16,10 +16,6 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 
 export class Main extends React.Component {
-    onEdit() {
-
-    }
-
     render() {
         return (
             <Grid item xs={12} md={12}>
