@@ -24,7 +24,7 @@ export class Main extends React.Component {
                         {this.props.data.map((item) => {
                             const url = 'http://localhost:8000/emp/delete/' + item._id
                             return (
-                                <ListItem>
+                                <ListItem key={item._id} >
                                     <ListItemAvatar>
                                         <Avatar>
                                             <PermIdentityIcon />
